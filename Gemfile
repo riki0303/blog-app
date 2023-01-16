@@ -33,6 +33,7 @@ gem 'jbuilder'
 gem 'annotate'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'devise'
 gem 'faker'
 gem 'hamlit'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
