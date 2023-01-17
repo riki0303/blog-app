@@ -22,8 +22,11 @@ class Article < ApplicationRecord
     validates :content, length: {minimum: 10}
     validates :content, uniqueness: true
 
-    # validate :validate_tittle_and_content_length
+    # validate :validate_tittle_and_content_lengthh
 
+    # 子は複数形で記述
+    has_many :comments, dependent: :destroy
+    # 親は単数系で記述
     belongs_to :user
 
     def display_created_at
