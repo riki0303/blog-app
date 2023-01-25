@@ -14,6 +14,8 @@
 #  index_articles_on_user_id  (user_id)
 #
 class Article < ApplicationRecord
+    has_one_attached :eyecatch
+
     validates :title, presence: true
     validates :title, length: {minimum: 2, maximum:100}
     validates :title, format: { with: /\A(?!\@)/ }
@@ -24,9 +26,10 @@ class Article < ApplicationRecord
 
     # validate :validate_tittle_and_content_lengthh
 
-    # 子は複数形で記述
+    # 複数形で記述
     has_many :comments, dependent: :destroy
-    # 親は単数系で記述
+		has_many :likes, dependent: :destroy
+    # 単数系で記述
     belongs_to :user
 
     def display_created_at
@@ -35,6 +38,10 @@ class Article < ApplicationRecord
 
     def author_name
         user.display_name
+    end
+
+    def like_count
+        likes.count
     end
 
     # private
